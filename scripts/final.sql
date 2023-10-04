@@ -87,10 +87,12 @@ WHERE LOWER(title) LIKE '%analyst%';
 
 -- 12.	How many different job titles do not contain either the word ‘Analyst’ or the word ‘Analytics’? What word do these positions have in common?
 
-SELECT DISTINCT(title)
+SELECT *
 FROM data_analyst_jobs
-WHERE title NOT LIKE '%Analyst%';
---ANSWER: 127
+WHERE LOWER(title) NOT LIKE '%analyst%'
+		AND LOWER (title) NOT LIKE '%analytics%';
+--ANSWER: only 4 and they have Tableau in common
+
 
 -- **BONUS:**
 -- You want to understand which jobs requiring SQL are hard to fill. Find the number of jobs by industry (domain) that require SQL and have been posted longer than 3 weeks. 
@@ -113,4 +115,4 @@ WHERE skill LIKE '%SQL%'
 	AND domain IS NOT NULL
 ORDER BY domain;
 
---ANSWER: Aerospace and Defense, Auto, Banks and Finance Services  
+--ANSWER: 1: Aerospace and Defense, 2: Auto, 3: Banks and Finance Services, 4: Computers and Electronics
